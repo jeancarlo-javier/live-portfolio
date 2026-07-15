@@ -41,12 +41,20 @@ Desarrollador FullStack: **6+ años de frontend** (autodidacta profesional desde
 
 ## Perfil actual (AI-first) — 🚧 EN CONSTRUCCIÓN
 
-Objetivo declarado por Jeancarlo (2026-07-15): actualizar todo el perfil, alineado con el mundo actual **AI-first**. Pendiente de que aporte:
+Objetivo declarado por Jeancarlo (2026-07-15): actualizar todo el perfil, alineado con el mundo actual **AI-first**. Se está construyendo por entrevista (sesión 2026-07-15).
 
-- [ ] Rol/ocupación actual (¿qué hace desde abr. 2024?)
+### Confirmado hasta ahora
+
+- **Identidad profesional:** ya no es frontend dev exclusivamente — se define como **Fullstack Developer**. Frontend senior (6+ años); backend autoevaluado entre **junior y mid level** (él mismo pide verificar ese nivel antes de publicarlo).
+
+### Pendiente de entrevista
+
+- [ ] Rol/ocupación actual (¿qué hace desde abr. 2024? ¿empleado, freelance, producto propio?)
 - [ ] Experiencia concreta con IA/agentes (herramientas, proyectos, resultados)
+- [ ] Stack backend real de hoy (¿sigue siendo Python/FastAPI?) y evidencia para calibrar el nivel junior/mid
 - [ ] Nuevo titular profesional
 - [ ] Proyectos actuales a destacar
+- [ ] Qué es AuralFret (aparece como org en PostHog y dominio de email)
 
 ## Perfil técnico público (verificado antes)
 
