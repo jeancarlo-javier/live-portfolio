@@ -13,6 +13,8 @@
 
 ## Perfil anterior (baseline — verificado con CV)
 
+> Versión completa e íntegra del perfil antiguo: [old-profile.md](./old-profile.md).
+
 Desarrollador FullStack: **6+ años de frontend** (autodidacta profesional desde dic. 2018) y **~1.5 años de backend** (desde ene. 2024). Proyectos en dashboards, CMS, startups, e-commerce, turismo, real estate y aplicaciones móviles.
 
 ### Trayectoria laboral (CV)
