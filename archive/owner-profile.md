@@ -56,8 +56,11 @@ Secundarios (open source, no insignia): `huevue` (color-picker Vue, repo fijado)
 - **Idioma del sitio:** **bilingüe** (EN + ES) — además el i18n del sitio funciona como demo de esa skill.
 - **Objetivo del portafolio:** marca personal como paraguas + **captación de clientes freelance/consultoría** como objetivo activo; formas de contacto visibles. También visibilidad de productos (AuralFret, MOA) y apertura a ofertas.
 
+## Detalles técnicos resueltos
+
+- **AI Chord Generator (AuralFret):** búsqueda semántica de acordes por descriptores en lenguaje natural ("dark chord", "metal chord", "bossa nova", "easy D chord"…) → devuelve el listado de voicings con más afinidad, vía embeddings de Gemini sobre el catálogo indexado. El grueso del esfuerzo fue construir/curar la data de acordes.
+
 ## Pendientes
 
-- [ ] Detalles internos del AI Chord Generator (Jeancarlo dará más; por ahora: embeddings de Gemini para indexar acordes)
 - [ ] Calibrar la etiqueta pública del nivel backend (él dijo "junior-mid"; la evidencia apunta a mid — confirmar cómo publicarlo)
-- [ ] Hora preferida para el cron diario de Hermes (v2)
+- [ ] Hora preferida para el cron diario de Hermes ("AI Model of the Day" + jobs del plan v2)
