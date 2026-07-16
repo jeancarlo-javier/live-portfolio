@@ -1,6 +1,6 @@
 # Perfil del propietario — Jeancarlo Javier
 
-**Última actualización:** 2026-07-16 · **Fuentes:** entrevista directa con Jeancarlo (sesiones 2026-07-15/16), CV oficial, webs verificadas (auralfret.com, eventrid.cl, idxboost.com, skills.sh), GitHub, PostHog. Perfil antiguo íntegro: [old-profile.md](./old-profile.md).
+**Última actualización:** 2026-07-16 · **Estado:** ✅ **estable — fuente de verdad (doc-data) para la planificación y construcción del sitio.** · **Fuentes:** entrevista directa con Jeancarlo (sesiones 2026-07-15/16), CV oficial, webs verificadas (auralfret.com, eventrid.cl, idxboost.com, skills.sh), GitHub, PostHog. Perfil antiguo íntegro: [old-profile.md](./old-profile.md).
 
 ## Identidad
 
@@ -60,7 +60,15 @@ Secundarios (open source, no insignia): `huevue` (color-picker Vue, repo fijado)
 
 - **AI Chord Generator (AuralFret):** búsqueda semántica de acordes por descriptores en lenguaje natural ("dark chord", "metal chord", "bossa nova", "easy D chord"…) → devuelve el listado de voicings con más afinidad, vía embeddings de Gemini sobre el catálogo indexado. El grueso del esfuerzo fue construir/curar la data de acordes.
 
-## Pendientes
+## Defaults operativos (vetables por Jeancarlo, no bloquean la construcción)
 
-- [ ] Calibrar la etiqueta pública del nivel backend (él dijo "junior-mid"; la evidencia apunta a mid — confirmar cómo publicarlo)
-- [ ] Hora preferida para el cron diario de Hermes ("AI Model of the Day" + jobs del plan v2)
+- **Nivel backend en público:** el sitio NO publica etiquetas de seniority ("junior/mid") — los portafolios no se etiquetan así; la evidencia habla sola ("6 años frontend, fullstack desde 2024, en producción en Eventrid"). La autoevaluación junior-mid queda solo como contexto interno.
+- **Cron diario de Hermes ("AI Model of the Day"):** por defecto **11:00 UTC** (~06:00 Lima) — la tarjeta del día está fresca antes de que empiece el tráfico del día. Cambiar cuando Jeancarlo indique otra hora.
+
+## Insumos para la siguiente fase (planificación de la construcción)
+
+Este doc es el *qué*; el *cómo* ya tiene base previa que la planificación debe retomar y actualizar:
+
+- `archive/research/2026-07-12-foundations.md` — features por tiers (Model of the Day, changelog vivo, heartbeat, /now…), arquitectura de datos JSON y reglas de los cron jobs. **Ojo:** su sección de perfil quedó obsoleta — manda este doc.
+- Plan de iteración 1 (shell del portafolio, arquitectura feature-based, contratos de datos) — commit `2a9ae1f`.
+- Decisiones ya cerradas que condicionan el diseño: bilingüe EN/ES (i18n como demo), titular "AI-native Fullstack Engineer & Agent Orchestrator", 4 proyectos insignia en el orden fijado, CTAs de contacto/freelance visibles, PostHog disponible para stats públicas.
