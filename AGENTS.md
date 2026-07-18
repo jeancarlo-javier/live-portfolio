@@ -13,11 +13,22 @@ staging, no PR, no human review between your edit and the public.
 - NEVER edit /srv/website-live directly. NEVER deploy any other way.
   scripts/deploy.sh is the only path from source to published.
 
+## Branching
+
+`main` is protected on GitHub (no direct pushes, PR-only) so a
+compromised session here can't delete or force-push it. All work
+happens on `dev` — commit and push there, never to `main`. The owner
+merges `dev -> main` manually via PR as a checkpoint/backup. Note:
+publishing (scripts/deploy.sh) is local build+rsync and doesn't care
+which branch is checked out — `dev` being live is just this repo's
+convention, not a technical requirement.
+
 ## Session start (before the first request)
 
 Run git status + git log -1. If there are uncommitted changes, a
 previous session died mid-work: reconcile (commit or revert + deploy)
-before touching anything new.
+before touching anything new. Confirm you're on `dev`
+(git branch --show-current); if not, switch to it.
 
 ## Work pattern for every request
 
@@ -26,7 +37,7 @@ before touching anything new.
    publishes — prefer one coherent edit over many partial saves.
 3. Verify the live result: curl -s http://127.0.0.1:8080/ and check
    the change is actually in the served HTML.
-4. Commit AND push (the remote must always mirror what is live).
+4. Commit AND push to `dev` (never `main`).
 5. Report what is now live, in one line.
 
 ## Rollback
