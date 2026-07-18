@@ -52,9 +52,10 @@ Secundarios (open source, no insignia): `huevue` (color-picker Vue, repo fijado)
 
 ## Decisiones tomadas (2026-07-15/16)
 
-- **Titular (dual, decisión 2026-07-18):**
+- **Titular (dual, decisión 2026-07-18, refinada 2026-07-18):**
   - **Sitio-portafolio (hero):** "AI-native Fullstack Engineer & Agent Orchestrator" (opción 3 del análisis de mercado; ancla sólida + modificador AI concreto, evitando el naming-chaos de 2026). Sostenible ahí porque la evidencia (AuralFret, MOA, Eventrid, IDXBoost) está inmediatamente debajo.
-  - **LinkedIn (headline corto):** **"Full Stack AI Engineer"** — título estandarizado de industria 2026 (variante reconocida de "AI Engineer", #1 en LinkedIn Jobs on the Rise), buscable por el algoritmo, y evita el riesgo de burla que LinkedIn tiene hacia títulos auto-inflados tipo "Orchestrator"/"Ninja" cuando no hay contexto inmediato debajo que los sostenga. Confirmado tras análisis cruzado (crítica GPT-5.5 + investigación de mercado).
+  - **LinkedIn (headline corto):** **"Full Stack AI Engineer (Agentic Workflows)"** — ancla estandarizada y buscable ("Full Stack AI Engineer", #1-adyacente en LinkedIn Jobs on the Rise 2026) + calificador entre paréntesis para la señal distintiva de agentes, siguiendo el patrón real que usa gente con perfil similar en LinkedIn (ancla reconocida primero, término nicho como calificador o como flecha de transición — nunca el término nicho suelto y aislado como título). Evita el riesgo de burla hacia títulos auto-inflados tipo "Orchestrator"/"Ninja" sueltos.
+  - **Nota de honestidad hacia reclutadores:** "AI Engineer" a secas en el mercado 2026 suele implicar ML-heavy (PyTorch, TensorFlow, entrenamiento/fine-tuning), que NO es el perfil real de Jeancarlo (él integra IA vía APIs/embeddings, no entrena modelos). El calificador "(Agentic Workflows)" ayuda a filtrar la audiencia correcta y reduce mismatch en entrevistas.
 - **Idioma del sitio:** **bilingüe** (EN + ES) — además el i18n del sitio funciona como demo de esa skill.
 - **Objetivo del portafolio:** marca personal como paraguas + **captación de clientes freelance/consultoría** como objetivo activo; formas de contacto visibles. También visibilidad de productos (AuralFret, MOA) y apertura a ofertas.
 
