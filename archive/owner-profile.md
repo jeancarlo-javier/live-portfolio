@@ -52,7 +52,9 @@ Secundarios (open source, no insignia): `huevue` (color-picker Vue, repo fijado)
 
 ## Decisiones tomadas (2026-07-15/16)
 
-- **Titular:** "AI-native Fullstack Engineer & Agent Orchestrator" (opción 3 del análisis de mercado; ancla sólida + modificador AI concreto, evitando el naming-chaos de 2026).
+- **Titular (dual, decisión 2026-07-18):**
+  - **Sitio-portafolio (hero):** "AI-native Fullstack Engineer & Agent Orchestrator" (opción 3 del análisis de mercado; ancla sólida + modificador AI concreto, evitando el naming-chaos de 2026). Sostenible ahí porque la evidencia (AuralFret, MOA, Eventrid, IDXBoost) está inmediatamente debajo.
+  - **LinkedIn (headline corto):** **"Full Stack AI Engineer"** — título estandarizado de industria 2026 (variante reconocida de "AI Engineer", #1 en LinkedIn Jobs on the Rise), buscable por el algoritmo, y evita el riesgo de burla que LinkedIn tiene hacia títulos auto-inflados tipo "Orchestrator"/"Ninja" cuando no hay contexto inmediato debajo que los sostenga. Confirmado tras análisis cruzado (crítica GPT-5.5 + investigación de mercado).
 - **Idioma del sitio:** **bilingüe** (EN + ES) — además el i18n del sitio funciona como demo de esa skill.
 - **Objetivo del portafolio:** marca personal como paraguas + **captación de clientes freelance/consultoría** como objetivo activo; formas de contacto visibles. También visibilidad de productos (AuralFret, MOA) y apertura a ofertas.
 
