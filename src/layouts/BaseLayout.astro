@@ -1,0 +1,30 @@
+---
+/**
+ * Shell HTML único del sitio: todo <head> pasa por aquí.
+ * Aún no lo usa ninguna página — se conecta cuando se construya la
+ * página principal. Ver docs/architecture/2026-07-19-estructura-base.md
+ */
+import { SITE } from "../data/site";
+import "../styles/tokens.css";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = SITE.name, description = SITE.description } = Astro.props;
+---
+
+<html lang={SITE.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

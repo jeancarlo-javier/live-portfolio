@@ -1,0 +1,13 @@
+/*
+ * Reset neutro mínimo. Sin decisiones visuales: eso vive en tokens.css
+ * cuando llegue la fase de diseño.
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}

@@ -1,0 +1,12 @@
+/*
+ * Design tokens — única fuente de valores visuales del sitio.
+ * Vacío a propósito: las decisiones de diseño (paleta, tipografía,
+ * espaciado) se toman en la fase de diseño, no en la base.
+ * Ver docs/architecture/2026-07-19-estructura-base.md
+ */
+:root {
+  /* --color-*   : paleta */
+  /* --font-*    : tipografía */
+  /* --space-*   : escala de espaciado */
+  /* --radius-*  : bordes */
+}
