@@ -12,7 +12,7 @@ export interface SiteConfig {
 }
 
 export const SITE: SiteConfig = {
-  name: "TODO", // pendiente: fase de contenido
-  description: "TODO", // pendiente: fase de contenido
+  name: "Hello", // pendiente: fase de contenido (coincide con el <title> vivo actual)
+  description: "", // pendiente: fase de contenido; vacío = no se emite <meta>
   lang: "en", // pendiente: coincide con la página viva actual hasta decidir
 };
