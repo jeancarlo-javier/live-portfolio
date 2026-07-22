@@ -1,0 +1,85 @@
+---
+import { SITE } from "../data/site";
+import { t, type Lang } from "../i18n";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "en" } = Astro.props;
+const copy = t(lang);
+const colophonHref = lang === "es" ? "/es/colophon" : "/colophon";
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href={`mailto:${SITE.email}`}>{copy.footer.email}</a>
+      <a href={SITE.github} rel="me">{copy.footer.github}</a>
+      <a href={SITE.linkedin} rel="me">{copy.footer.linkedin}</a>
+      <a href={colophonHref}>{copy.footer.colophon}</a>
+    </div>
+
+    <div class="footer-meta">
+      <span>{copy.footer.builtLine}</span>
+      <span>{copy.footer.copyright}</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block: var(--space-2xl);
+    color: var(--color-muted);
+    border-top: 1px solid var(--color-line);
+    font-size: var(--text-sm);
+  }
+
+  .footer-inner {
+    display: grid;
+    gap: var(--space-xl);
+    width: 100%;
+    max-width: var(--width-site);
+    padding-inline: var(--space-lg);
+    margin-inline: auto;
+  }
+
+  .footer-links,
+  .footer-meta {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .footer-links {
+    gap: var(--space-sm) var(--space-lg);
+  }
+
+  .footer-links a {
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color var(--t-fast) var(--ease-out);
+  }
+
+  .footer-links a:hover {
+    color: var(--color-accent);
+  }
+
+  .footer-meta {
+    justify-content: space-between;
+    gap: var(--space-md) var(--space-xl);
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--leading-snug);
+  }
+
+  @media (max-width: 40rem) {
+    .footer-inner {
+      padding-inline: var(--space-md);
+    }
+
+    .footer-meta {
+      flex-direction: column;
+    }
+  }
+</style>

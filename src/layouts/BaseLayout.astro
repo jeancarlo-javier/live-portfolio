@@ -1,30 +1,66 @@
 ---
 /**
- * Shell HTML único del sitio: todo <head> pasa por aquí.
- * Aún no lo usa ninguna página — se conecta cuando se construya la
- * página principal. Ver docs/architecture/2026-07-19-estructura-base.md
+ * Shell HTML único del sitio: centraliza metadatos, idioma y chrome.
+ * Las páginas aportan su contenido y metadatos específicos mediante props.
  */
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteNav from "../components/SiteNav.astro";
 import { SITE } from "../data/site";
+import { t, type Lang } from "../i18n";
 import "../styles/tokens.css";
 import "../styles/global.css";
 
 interface Props {
   title?: string;
   description?: string;
+  lang?: Lang;
+  altHref?: string;
+  path?: string;
 }
 
-const { title = SITE.name, description = SITE.description } = Astro.props;
+const {
+  title = SITE.name,
+  description = "",
+  lang = "en",
+  altHref,
+  path = Astro.url.pathname,
+} = Astro.props;
+const copy = t(lang);
+const baseUrl = SITE.url.trim();
+const canonicalUrl = baseUrl ? new URL(path, baseUrl).toString() : "";
+const alternateLang: Lang = lang === "en" ? "es" : "en";
+const alternateUrl = baseUrl && altHref ? new URL(altHref, baseUrl).toString() : "";
 ---
 
-<html lang={SITE.lang}>
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0b0f14" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === "en" ? "en_US" : "es_ES"} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {
+      canonicalUrl && alternateUrl && (
+        <>
+          <link rel="alternate" hreflang={lang} href={canonicalUrl} />
+          <link rel="alternate" hreflang={alternateLang} href={alternateUrl} />
+        </>
+      )
+    }
   </head>
   <body>
-    <slot />
+    <a class="visually-hidden" href="#main">{copy.skipLink}</a>
+    <SiteNav lang={lang} altHref={altHref} />
+    <main id="main"><slot /></main>
+    <SiteFooter lang={lang} />
   </body>
 </html>
