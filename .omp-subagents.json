@@ -1,11 +1,11 @@
 {
   "mode": "auto",
   "models": {
-    "coder": "minimax-code/MiniMax-M3:high",
-    "coder-1m": "minimax-1m/MiniMax-M3:high",
-    "chore": "minimax-code/MiniMax-M2.7-highspeed:low",
-    "reviewer": "openai-codex/gpt-5.5:xhigh",
-    "planner": "openai-codex/gpt-5.5:xhigh",
-    "web": "minimax-code/MiniMax-M3:medium"
+    "coder": "openai-codex/gpt-5.6-sol:high",
+    "coder-1m": "openai-codex/gpt-5.6-sol:high",
+    "chore": "openai-codex/gpt-5.6-luna:medium",
+    "reviewer": "openai-codex/gpt-5.6-sol:xhigh",
+    "planner": "openai-codex/gpt-5.6-sol:xhigh",
+    "web": "openai-codex/gpt-5.6-terra:medium"
   }
 }
