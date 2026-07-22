@@ -1,5 +1,69 @@
 export type Lang = "en" | "es";
 
+export interface ContentDict {
+  hero: {
+    kicker: string;
+    h1: string;
+    sub: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    metaLine: string;
+  };
+  credibility: readonly string[];
+  work: {
+    kicker: string;
+    title: string;
+    intro: string;
+    secondaryTitle: string;
+  };
+  services: {
+    kicker: string;
+    title: string;
+    availability: string;
+    items: readonly {
+      title: string;
+      oneLiner: string;
+    }[];
+  };
+  experience: {
+    kicker: string;
+    title: string;
+    rows: readonly {
+      period: string;
+      company: string;
+      role: string;
+      note: string;
+    }[];
+  };
+  operations: {
+    kicker: string;
+    title: string;
+    body: string;
+    panel: {
+      lastBuild: string;
+      lastCommit: string;
+      recentChanges: string;
+      motd: string;
+    };
+    motdEmpty: string;
+    colophonLink: string;
+  };
+  contact: {
+    kicker: string;
+    title: string;
+    body: string;
+    emailCta: string;
+    githubLabel: string;
+    linkedinLabel: string;
+  };
+  meta: {
+    home: {
+      title: string;
+      description: string;
+    };
+  };
+}
+
 export interface ChromeDict {
   skipLink: string;
   nav: {
@@ -22,4 +86,5 @@ export interface ChromeDict {
     label: string;
     href: string;
   };
+  content: ContentDict;
 }
