@@ -106,11 +106,13 @@ export const es = {
       kicker: "04 · Operaciones",
       title: "Este sitio lo operan agentes",
       body: "Cada cambio aquí lo hace un agente de IA con permiso de publicación, dentro de guardrails que diseñé: deploys que solo salen si el build pasa, una rama main protegida y una regla dura contra los datos inventados. El panel de abajo se genera desde el repositorio en cada build — frescura verificable, no tiempo real.",
+      telemetryLabel: "telemetría del sitio — generada en el build",
       panel: {
         lastBuild: "último build",
         lastCommit: "último commit",
         recentChanges: "cambios recientes",
         motd: "modelo del día",
+        utc: "UTC",
       },
       motdEmpty:
         "Primera corrida programada pendiente — el pipeline de publicación está vivo; el cron diario de research aún no.",

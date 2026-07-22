@@ -1,5 +1,30 @@
 ---
+import ContactSection from "../components/ContactSection.astro";
+import CredibilityStrip from "../components/CredibilityStrip.astro";
+import ExperienceSection from "../components/ExperienceSection.astro";
+import Hero from "../components/Hero.astro";
+import OperationsSection from "../components/OperationsSection.astro";
+import ServicesSection from "../components/ServicesSection.astro";
+import WorkSection from "../components/WorkSection.astro";
+import { t } from "../i18n";
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const lang = "en";
+const meta = t(lang).content.meta.home;
 ---
 
-<BaseLayout />
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  lang={lang}
+  altHref="/es/"
+  path="/"
+>
+  <Hero lang={lang} />
+  <CredibilityStrip lang={lang} />
+  <WorkSection lang={lang} />
+  <ServicesSection lang={lang} />
+  <ExperienceSection lang={lang} />
+  <OperationsSection lang={lang} />
+  <ContactSection lang={lang} />
+</BaseLayout>

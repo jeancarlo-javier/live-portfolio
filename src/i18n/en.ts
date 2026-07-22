@@ -106,11 +106,13 @@ export const en = {
       kicker: "04 · Operations",
       title: "This site is operated by agents",
       body: "Every change here is made by an AI agent with publish rights, working inside guardrails I designed: build-or-nothing deploys, a protected main branch, and a hard rule against invented data. The panel below is generated from the repository at build time — verifiable freshness, not real-time.",
+      telemetryLabel: "site telemetry — generated at build",
       panel: {
         lastBuild: "last build",
         lastCommit: "last commit",
         recentChanges: "recent changes",
         motd: "model of the day",
+        utc: "UTC",
       },
       motdEmpty:
         "First scheduled run pending — the publishing pipeline is live; the daily research cron isn't yet.",

@@ -1,0 +1,66 @@
+---
+interface Props {
+  id: string;
+  kicker: string;
+  title: string;
+}
+
+const { id, kicker, title } = Astro.props;
+const kickerParts = kicker.split("·").map((part) => part.trim());
+---
+
+<section id={id}>
+  <div class="container">
+    <p class="kicker">
+      {
+        kickerParts.map((part, index) => (
+          <>
+            {index > 0 && <span class="separator" aria-hidden="true">·</span>}
+            <span>{part}</span>
+          </>
+        ))
+      }
+    </p>
+    <h2>{title}</h2>
+    <div class="section-body"><slot /></div>
+  </div>
+</section>
+
+<style>
+  section {
+    padding-block: var(--section-pad);
+    scroll-margin-top: var(--space-3xl);
+  }
+
+  .container {
+    width: 100%;
+    max-width: var(--width-site);
+    padding-inline: var(--space-lg);
+    margin-inline: auto;
+  }
+
+  .kicker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wide);
+    line-height: var(--leading-snug);
+    text-transform: uppercase;
+  }
+
+  .separator {
+    color: var(--color-accent);
+  }
+
+  h2 {
+    margin-top: var(--space-sm);
+    font-size: var(--text-2xl);
+  }
+
+  .section-body {
+    margin-top: var(--space-xl);
+  }
+</style>

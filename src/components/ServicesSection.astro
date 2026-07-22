@@ -1,0 +1,85 @@
+---
+import { t, type Lang } from "../i18n";
+import Section from "./Section.astro";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const content = t(lang).content;
+const copy = content.services;
+---
+
+<Section id="services" kicker={copy.kicker} title={copy.title}>
+  <div class="services-grid">
+    {
+      copy.items.map((item, index) => (
+        <article>
+          <p class="index">{String(index + 1).padStart(2, "0")}</p>
+          <h3>{item.title}</h3>
+          <p class="one-liner">{item.oneLiner}</p>
+        </article>
+      ))
+    }
+  </div>
+
+  <p class="availability">
+    <span class="status-dot" aria-hidden="true">●</span>
+    <span>{copy.availability}</span>
+    <a href="#contact">{content.contact.emailCta}</a>
+  </p>
+</Section>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  article {
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .index {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  h3 {
+    margin-top: var(--space-sm);
+    font-size: var(--text-lg);
+  }
+
+  .one-liner {
+    margin-top: var(--space-sm);
+    color: var(--color-muted);
+    font-size: var(--text-md);
+    line-height: var(--leading-body);
+  }
+
+  .availability {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-sm);
+    align-items: baseline;
+    margin-top: var(--space-xl);
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  .status-dot,
+  .availability a {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 45rem) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

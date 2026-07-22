@@ -1,0 +1,174 @@
+---
+import MOTD from "../data/agent/motd.json";
+import { BUILD } from "../data/build";
+import { t, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+interface MotdEntry {
+  date: string;
+  model: string;
+  why: Record<Lang, string>;
+}
+
+const { lang } = Astro.props;
+const copy = t(lang).content.operations;
+const entries = MOTD.entries as MotdEntry[];
+const latestMotd = entries[0];
+const builtAt = `${BUILD.builtAt.slice(0, 16).replace("T", " ")} ${copy.panel.utc}`;
+const colophonHref = lang === "es" ? "/es/colophon" : "/colophon";
+---
+
+<div class="panel">
+  <p class="panel-header">
+    <span class="status-dot" aria-hidden="true">●</span>
+    <span>{copy.telemetryLabel}</span>
+  </p>
+
+  <dl>
+    <div class="panel-row">
+      <dt>{copy.panel.lastBuild}</dt>
+      <dd class="value">{builtAt}</dd>
+    </div>
+
+    {
+      BUILD.commit && (
+        <div class="panel-row">
+          <dt>{copy.panel.lastCommit}</dt>
+          <dd class="value">
+            {BUILD.commit.hash}<span aria-hidden="true"> — </span>{BUILD.commit.subject}
+            <span aria-hidden="true"> · </span>{BUILD.commit.date.slice(0, 10)}
+          </dd>
+        </div>
+      )
+    }
+
+    <div class="panel-row">
+      <dt>{copy.panel.recentChanges}</dt>
+      <dd>
+        <ul class="recent-list">
+          {
+            BUILD.recent.slice(0, 4).map((change) => (
+              <li title={change.subject}>
+                {change.date} {change.hash} {change.subject}
+              </li>
+            ))
+          }
+        </ul>
+      </dd>
+    </div>
+
+    <div class="panel-row">
+      <dt>{copy.panel.motd}</dt>
+      <dd class="motd-value">
+        {
+          latestMotd ? (
+            <>
+              {latestMotd.model}<span aria-hidden="true"> — </span>{latestMotd.why[lang]}
+            </>
+          ) : (
+            copy.motdEmpty
+          )
+        }
+      </dd>
+    </div>
+  </dl>
+
+  <div class="panel-footer">
+    <a href={colophonHref}>{copy.colophonLink}<span aria-hidden="true"> →</span></a>
+  </div>
+</div>
+
+<style>
+  .panel {
+    padding: var(--space-lg) var(--space-xl);
+    background: var(--color-inset);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  .panel-header {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+    padding-bottom: var(--space-md);
+    color: var(--color-muted);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wide);
+    line-height: var(--leading-snug);
+    text-transform: uppercase;
+  }
+
+  .status-dot {
+    color: var(--color-accent);
+  }
+
+  dl {
+    margin: 0;
+  }
+
+  .panel-row {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: var(--space-md);
+    padding-block: var(--space-sm);
+    border-top: 1px solid var(--color-line);
+  }
+
+  dt {
+    color: var(--color-muted);
+  }
+
+  dd {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .value {
+    color: var(--color-text);
+    overflow-wrap: anywhere;
+  }
+
+  .recent-list {
+    padding: 0;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--text-xs);
+    list-style: none;
+  }
+
+  .recent-list li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .motd-value {
+    color: var(--color-muted);
+  }
+
+  .panel-footer {
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .panel-footer a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  @media (max-width: 45rem) {
+    .panel {
+      padding-inline: var(--space-lg);
+    }
+
+    .panel-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-xs);
+    }
+  }
+</style>

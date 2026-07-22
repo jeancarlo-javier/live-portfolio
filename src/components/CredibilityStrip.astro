@@ -1,0 +1,53 @@
+---
+import { t, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const items = t(lang).content.credibility;
+---
+
+<div class="credibility-strip">
+  <div class="container">
+    {
+      items.map((item, index) => (
+        <span class="item">
+          {index > 0 && <span class="separator" aria-hidden="true">·</span>}
+          <span>{item}</span>
+        </span>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .credibility-strip {
+    padding-block: var(--space-lg);
+    color: var(--color-muted);
+    border-block: 1px solid var(--color-line);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-lg);
+    width: 100%;
+    max-width: var(--width-site);
+    padding-inline: var(--space-lg);
+    margin-inline: auto;
+  }
+
+  .item {
+    display: inline-flex;
+    gap: var(--space-lg);
+    align-items: baseline;
+  }
+
+  .separator {
+    color: var(--color-accent);
+  }
+</style>

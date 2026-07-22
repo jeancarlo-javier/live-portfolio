@@ -39,11 +39,13 @@ export interface ContentDict {
     kicker: string;
     title: string;
     body: string;
+    telemetryLabel: string;
     panel: {
       lastBuild: string;
       lastCommit: string;
       recentChanges: string;
       motd: string;
+      utc: string;
     };
     motdEmpty: string;
     colophonLink: string;
