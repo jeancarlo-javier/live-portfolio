@@ -1,0 +1,219 @@
+---
+import { BUILD } from "../data/build";
+import { PROJECTS } from "../data/projects";
+import { t, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const copy = t(lang).content.colophon;
+const builtDate = BUILD.builtAt.slice(0, 10);
+const homeHref = lang === "es" ? "/es/" : "/";
+const moaHref = PROJECTS.find((project) => project.id === "moa")?.url;
+
+if (!moaHref) {
+  throw new Error("The MOA project must provide a public URL.");
+}
+---
+
+<div class="colophon-shell">
+  <article class="colophon">
+    <header class="colophon-header">
+      <p class="kicker">{copy.kicker}</p>
+      <h1>{copy.title}</h1>
+      <p class="intro">{copy.intro}</p>
+    </header>
+
+    <section aria-labelledby="stack-heading">
+      <h2 id="stack-heading">{copy.stack.title}</h2>
+      <p>{copy.stack.body}</p>
+    </section>
+
+    <section aria-labelledby="pipeline-heading">
+      <h2 id="pipeline-heading">{copy.pipeline.title}</h2>
+      <p>{copy.pipeline.body}</p>
+    </section>
+
+    <section aria-labelledby="guardrails-heading">
+      <h2 id="guardrails-heading">{copy.guardrails.title}</h2>
+      <div class="guardrail-panel">
+        <ul>
+          {
+            copy.guardrails.items.map((item) => (
+              <li>
+                {item.split(/(`[^`]+`)/).map((part) =>
+                  part.startsWith("`") ? <code>{part.slice(1, -1)}</code> : part,
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="builders-heading">
+      <h2 id="builders-heading">{copy.builders.title}</h2>
+      <p>{copy.builders.body}</p>
+      <p>
+        {copy.builders.moaLead}{" "}
+        <a href={moaHref}>{copy.builders.moaLink}</a>{copy.builders.moaTail}
+      </p>
+    </section>
+
+    <section aria-labelledby="next-heading">
+      <h2 id="next-heading">{copy.next.title}</h2>
+      <p class="planned-label">{copy.next.label}</p>
+      <p>{copy.next.body}</p>
+      <p class="closing">{copy.next.closing}</p>
+    </section>
+
+    <footer class="page-footer">
+      <p class="build-line">
+        {copy.footer.built}{" "}<time datetime={BUILD.builtAt}>{builtDate}</time>
+        {
+          BUILD.commit && (
+            <>
+              <span aria-hidden="true"> · </span>
+              {copy.footer.commit} <code>{BUILD.commit.hash}</code>
+            </>
+          )
+        }
+      </p>
+      <a class="back-link" href={homeHref}>{copy.footer.backHome}</a>
+    </footer>
+  </article>
+</div>
+
+<style>
+  .colophon-shell {
+    width: 100%;
+    max-width: var(--width-site);
+    padding-inline: var(--space-lg);
+    margin-inline: auto;
+  }
+
+  .colophon {
+    max-width: var(--width-prose);
+  }
+
+  .colophon-header {
+    padding-block: var(--space-3xl);
+  }
+
+  .kicker,
+  .planned-label,
+  .page-footer {
+    font-family: var(--font-mono);
+  }
+
+  .kicker {
+    color: var(--color-accent);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wide);
+    line-height: var(--leading-snug);
+  }
+
+  h1 {
+    margin-top: var(--space-sm);
+    font-size: var(--text-2xl);
+  }
+
+  .intro {
+    margin-top: var(--space-xl);
+    color: var(--color-muted);
+    font-size: var(--text-md);
+    line-height: var(--leading-body);
+  }
+
+  section {
+    padding-block: var(--space-2xl);
+    border-top: 1px solid var(--color-line);
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+  }
+
+  section > p {
+    margin-top: var(--space-lg);
+    color: var(--color-muted);
+  }
+
+  section > p + p {
+    margin-top: var(--space-md);
+  }
+
+  .guardrail-panel {
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
+    background: var(--color-inset);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  .guardrail-panel ul {
+    padding-left: var(--space-lg);
+    margin: 0;
+  }
+
+  .guardrail-panel li {
+    color: var(--color-muted);
+  }
+
+  .guardrail-panel li + li {
+    margin-top: var(--space-md);
+  }
+
+  .guardrail-panel li::marker {
+    color: var(--color-accent);
+  }
+
+  .guardrail-panel code {
+    color: var(--color-text);
+  }
+
+  .planned-label {
+    color: var(--color-accent);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-wide);
+    line-height: var(--leading-snug);
+    text-transform: uppercase;
+  }
+
+  section > .closing {
+    color: var(--color-text);
+  }
+
+  .page-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-md) var(--space-xl);
+    padding-block: var(--space-xl) var(--space-2xl);
+    border-top: 1px solid var(--color-line);
+    font-size: var(--text-xs);
+    line-height: var(--leading-snug);
+  }
+
+  .build-line {
+    color: var(--color-muted);
+  }
+
+  .back-link {
+    text-decoration: none;
+  }
+
+  @media (max-width: 40rem) {
+    .colophon-shell {
+      padding-inline: var(--space-md);
+    }
+
+    .colophon-header {
+      padding-block: var(--space-2xl);
+    }
+  }
+</style>

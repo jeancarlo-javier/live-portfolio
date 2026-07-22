@@ -50,6 +50,45 @@ export interface ContentDict {
     motdEmpty: string;
     colophonLink: string;
   };
+  colophon: {
+    meta: {
+      title: string;
+      description: string;
+    };
+    kicker: string;
+    title: string;
+    intro: string;
+    stack: {
+      title: string;
+      body: string;
+    };
+    pipeline: {
+      title: string;
+      body: string;
+    };
+    guardrails: {
+      title: string;
+      items: readonly string[];
+    };
+    builders: {
+      title: string;
+      body: string;
+      moaLead: string;
+      moaLink: string;
+      moaTail: string;
+    };
+    next: {
+      title: string;
+      label: string;
+      body: string;
+      closing: string;
+    };
+    footer: {
+      built: string;
+      commit: string;
+      backHome: string;
+    };
+  };
   contact: {
     kicker: string;
     title: string;

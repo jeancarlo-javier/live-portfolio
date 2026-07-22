@@ -118,6 +118,54 @@ export const en = {
         "First scheduled run pending — the publishing pipeline is live; the daily research cron isn't yet.",
       colophonLink: "How this works",
     },
+    colophon: {
+      meta: {
+        title: "Colophon — how this site works · Jeancarlo Javier",
+        description:
+          "A portfolio operated by AI agents with real publish rights — inside guardrails I designed. This page documents the pipeline, the rules it obeys, and where it goes next. Everything here is verifiable in the repository.",
+      },
+      kicker: "Colophon",
+      title: "This site builds, publishes, and explains itself",
+      intro:
+        "A portfolio operated by AI agents with real publish rights — inside guardrails I designed. This page documents the pipeline, the rules it obeys, and where it goes next. Everything here is verifiable in the repository.",
+      stack: {
+        title: "The stack",
+        body: "Astro 7 renders the site as fully static output. There is no client-side JavaScript and no webfont request: system font stacks do the work. Design tokens live in plain CSS, and English and Spanish have their own routes. The generated files are served from a private server behind a proxy. Those are deliberate constraints. The page you are reading costs almost nothing to load; the interface is making its own performance argument.",
+      },
+      pipeline: {
+        title: "The pipeline",
+        body: "An AI agent session holds publish rights to this repository. Every accepted change passes through one deployment script: build → rsync → health check. A failed build stops the script before files are copied, so nothing ships and the previous version keeps serving. Git is the audit log; every site change becomes a commit. The operations panel on the home page reads the latest commits and build timestamp directly from the repository during the static build.",
+      },
+      guardrails: {
+        title: "The guardrails",
+        items: [
+          "Deployments are build-or-nothing. A broken build cannot go live.",
+          "`main` is protected. Agents work on `dev`; Jeancarlo merges it as a checkpoint.",
+          "Visitor-submitted content never enters an agent's context. That limits prompt-injection risk on an account with publish rights.",
+          'Agents do not invent data. Every operations-panel value comes from the repository at build time; daily content requires cited sources and may report "nothing notable today."',
+          "The deployment script and the agents' standing instructions are off-limits to the agents themselves.",
+        ],
+      },
+      builders: {
+        title: "Who builds it",
+        body: "I designed and direct the site. I own the decisions that matter: positioning, the design system, copy rules, and guardrails. Implementation runs through a multi-model pipeline. A Claude model orchestrates and reviews; a GPT-5.6 model builds. A cross-family review happens before changes ship. The division is deliberate: models produce and challenge work, while I set the constraints and remain accountable for what reaches the site.",
+        moaLead: "The same orchestration philosophy is published as",
+        moaLink: "MOA on skills.sh",
+        moaTail: ".",
+      },
+      next: {
+        title: "What's next",
+        label: "Planned — not shipped",
+        body: 'A daily “AI Model of the Day” research cron is planned for 11:00 UTC. It will write citable JSON. A public automation ledger will show those runs. A `/models` archive will follow only after the history is credible, alongside a `/now` page. None of that exists as a public feature yet; the empty data files only define the contract.',
+        closing:
+          "When those ship, this page will say so — it has no reason to lie.",
+      },
+      footer: {
+        built: "this page was built",
+        commit: "commit",
+        backHome: "← back to the work",
+      },
+    },
     contact: {
       kicker: "05 · Contact",
       title: "Have a project in mind?",

@@ -118,6 +118,54 @@ export const es = {
         "Primera corrida programada pendiente — el pipeline de publicación está vivo; el cron diario de research aún no.",
       colophonLink: "Cómo funciona",
     },
+    colophon: {
+      meta: {
+        title: "Colofón — cómo funciona este sitio · Jeancarlo Javier",
+        description:
+          "Un portafolio operado por agentes de IA con permisos reales de publicación — dentro de guardrails que diseñé. Esta página documenta el pipeline, las reglas que obedece y lo que sigue. Todo lo que se afirma aquí puede verificarse en el repositorio.",
+      },
+      kicker: "Colofón",
+      title: "Este sitio se construye, se publica y se explica solo",
+      intro:
+        "Un portafolio operado por agentes de IA con permisos reales de publicación — dentro de guardrails que diseñé. Esta página documenta el pipeline, las reglas que obedece y lo que sigue. Todo lo que se afirma aquí puede verificarse en el repositorio.",
+      stack: {
+        title: "El stack",
+        body: "Astro 7 genera el sitio como archivos completamente estáticos. No hay JavaScript en el cliente ni solicitudes de webfonts: los stacks de fuentes del sistema hacen el trabajo. Los tokens de diseño viven en CSS plano, y el inglés y el español tienen rutas propias. Los archivos generados se sirven desde un servidor privado detrás de un proxy. Son restricciones deliberadas. La página que estás leyendo cuesta casi nada de cargar; la interfaz presenta su propio argumento de rendimiento.",
+      },
+      pipeline: {
+        title: "El pipeline",
+        body: "Una sesión de un agente de IA tiene permisos de publicación sobre este repositorio. Cada cambio aceptado pasa por un solo script de despliegue: build → rsync → health check. Si el build falla, el script se detiene antes de copiar archivos; nada se publica y la versión anterior sigue sirviéndose. Git es el registro de auditoría: cada cambio del sitio se convierte en un commit. El panel de operaciones de la página principal lee los commits recientes y la hora del build directamente del repositorio durante la generación estática.",
+      },
+      guardrails: {
+        title: "Los guardrails",
+        items: [
+          "Los despliegues son build-or-nothing. Un build roto nunca puede llegar al sitio.",
+          "`main` está protegida. Los agentes trabajan en `dev`; Jeancarlo hace el merge como punto de control.",
+          "El contenido enviado por visitantes nunca entra en el contexto de un agente. Así se limita el riesgo de prompt injection en una cuenta con permisos de publicación.",
+          'Los agentes no inventan datos. Cada valor del panel de operaciones viene del repositorio durante el build; el contenido diario exige fuentes citadas y puede decir “nada notable hoy”.',
+          "El script de despliegue y las instrucciones permanentes de los agentes están fuera del alcance de los propios agentes.",
+        ],
+      },
+      builders: {
+        title: "Quién lo construye",
+        body: "Diseñé y dirijo el sitio. Soy responsable de las decisiones que importan: el posicionamiento, el sistema de diseño, las reglas de copy y los guardrails. La implementación pasa por un pipeline multimodelo. Un modelo Claude orquesta y revisa; un modelo GPT-5.6 construye. Hay revisión entre familias antes de publicar cualquier cambio. La división es deliberada: los modelos producen y cuestionan el trabajo, mientras yo fijo las restricciones y respondo por lo que llega al sitio.",
+        moaLead: "La misma filosofía de orquestación está publicada como",
+        moaLink: "MOA en skills.sh",
+        moaTail: ".",
+      },
+      next: {
+        title: "Qué sigue",
+        label: "Planeado — no publicado",
+        body: "Está planeado un cron diario de investigación, “AI Model of the Day”, para las 11:00 UTC. Escribirá JSON citable. Un registro público de automatización mostrará esas ejecuciones. Un archivo `/models` llegará solo cuando el historial sea creíble, junto con una página `/now`. Nada de eso existe aún como una función pública; los archivos de datos vacíos solo definen el contrato.",
+        closing:
+          "Cuando se publique, esta página lo dirá — no tiene motivos para mentir.",
+      },
+      footer: {
+        built: "esta página se construyó el",
+        commit: "commit",
+        backHome: "← volver al trabajo",
+      },
+    },
     contact: {
       kicker: "05 · Contacto",
       title: "¿Tienes un proyecto en mente?",

@@ -1,0 +1,18 @@
+---
+import ColophonContent from "../components/ColophonContent.astro";
+import { t } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const lang = "en";
+const meta = t(lang).content.colophon.meta;
+---
+
+<BaseLayout
+  title={meta.title}
+  description={meta.description}
+  lang={lang}
+  altHref="/es/colophon"
+  path="/colophon"
+>
+  <ColophonContent lang={lang} />
+</BaseLayout>
